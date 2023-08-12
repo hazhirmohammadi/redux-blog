@@ -1,17 +1,15 @@
-import { useState } from 'react'
-function App() {
-  const [count, setCount] = useState(0)
+import BlogsList from "./component/BlogsList.jsx";
 
-  return (
-    <>
-      <h1>Vite 🙂 React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
-  )
+const App = () => {
+
+
+   return (
+       <>
+          <div>
+             <BlogsList/>
+          </div>
+       </>
+   )
 }
 
 export default App
