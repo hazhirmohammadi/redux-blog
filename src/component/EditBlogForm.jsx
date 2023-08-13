@@ -1,31 +1,44 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import { useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {blogUpdated, selectBlogsId} from "../reducers/blogSlice.js";
 
-import { blogAdded } from "../reducers/blogSlice";
+const EditBlogForm = () => {
+   const {blogId} = useParams();
 
-const CreateBlogForm = () => {
-   const [title, setTitle] = useState("");
-   const [content, setContent] = useState("");
+   const blog = useSelector(selectBlogsId(blogId));
+
+   const [title, setTitle] = useState(blog.title);
+   const [content, setContent] = useState();
+
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
 
+   const handleSubmitForm=()=>{
+      if (title&&content){
+         dispatch(blogUpdated({id:blogId,title,content}));
+         navigate(`/blogs/${blogId}`);
+      }
+   }
+
+
+
+   if (!blog) {
+      return (
+          <section className="text-center">
+             <h2 className="" style={{color: "teal"}}>this is post not found🔎</h2>
+          </section>
+      )
+   }
+
    const onTitleChange = (e) => setTitle(e.target.value);
    const onContentChange = (e) => setContent(e.target.value);
 
-   const handleSubmitForm = () => {
-      if (title && content) {
-         dispatch(blogAdded(title,content));
-         setTitle("");
-         setContent("");
-         navigate("/");
-      }
-   };
 
    return (
-       <section style={{display:"flex",justifyContent:"center",}}>
-          <h2 className="m">create Post</h2>
+       <section style={{display: "flex", justifyContent: "center",}}>
+          <h2 className="m">Edit Post</h2>
           <form autoComplete="off" className="form radius mt">
              <label className="label radius text_white bg_block" htmlFor="blogTitle">Subject:</label>
              <input
@@ -45,11 +58,10 @@ const CreateBlogForm = () => {
                  onChange={onContentChange}
              />
              <button className="btn radius m" type="button" onClick={handleSubmitForm}>
-                Create ⚡
+                Edit ⚡
              </button>
           </form>
        </section>
-   );
-};
-
-export default CreateBlogForm;
+   )
+}
+export default EditBlogForm

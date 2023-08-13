@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout.jsx";
 import App from "../App.jsx";
 import SingleBlogPage from "../component/SingleBlogPage.jsx";
 import CreateBlogForm from "../component/CreateBlogForm.jsx";
+import EditBlogForm from "../component/EditBlogForm.jsx";
 
 export const router = createBrowserRouter([
    {
@@ -17,11 +18,15 @@ export const router = createBrowserRouter([
       ]
    },
    {
-      path:"/blogs/create-blog",
-      element:<CreateBlogForm/>
+      path: "/blogs/create-blog",
+      element: <CreateBlogForm/>
    },
    {
       path: "/blogs/:blogId",
       element: <SingleBlogPage/>
+   },
+   {
+      path: "/editBlog/:blogId",
+      element: <EditBlogForm/>
    }
 ]);
