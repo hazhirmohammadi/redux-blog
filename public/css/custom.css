@@ -55,3 +55,54 @@
 
 /*radius*/
 .radius{border-radius: 8px;}
+
+/*Button*/
+.btn{
+    font-family: system-ui;
+    outline: none;
+    padding: 10px;
+    border: none;
+    background: rgba(21, 20, 20, 0.68);
+    color: white;
+}
+.btn:hover{
+    border: #4527a0 2px solid;
+    background: rgb(21, 20, 20);
+    color: #5830d7;
+}
+/*form and input*/
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    font-family: system-ui;
+    padding: 10px;
+    border: #3f51b5 1px solid;
+    height: 300px;
+    background: rgba(69, 88, 197, 0.87);
+}
+.input{
+    outline: none;
+    border: none;
+    background: rgba(21, 20, 20, 0.83);
+    color: white;
+    width: 200px;
+    padding: 10px;
+
+}
+.label{
+    border: purple 1px solid;
+    font-size: 20px;
+    margin: 4px;
+    padding: 5px;
+
+}
+/*font*/
+.font-md{
+    font-size: 19px;
+}
+.font-sm{
+    font-size: 16px;
+}

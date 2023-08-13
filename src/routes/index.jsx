@@ -2,6 +2,7 @@ import {createBrowserRouter} from "react-router-dom";
 import MainLayout from "../layouts/MainLayout.jsx";
 import App from "../App.jsx";
 import SingleBlogPage from "../component/SingleBlogPage.jsx";
+import CreateBlogForm from "../component/CreateBlogForm.jsx";
 
 export const router = createBrowserRouter([
    {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
             element: <App/>,
          }
       ]
+   },
+   {
+      path:"/blogs/create-blog",
+      element:<CreateBlogForm/>
    },
    {
       path: "/blogs/:blogId",

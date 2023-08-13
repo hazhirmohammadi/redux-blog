@@ -1,7 +1,8 @@
 import {useSelector} from "react-redux";
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 
 const BlogsList = () => {
+   const navigeat=useNavigate();
    const blogs = useSelector(state => state.blogs)
    const renderedBlogs = blogs.map(blog=>(
        <article className="blog-excerpt bg_block">
@@ -13,7 +14,13 @@ const BlogsList = () => {
        </article>
    ));
    return (
-       <section className="blogs-list">
+       <section className="blogs-list ">
+          <button
+              className="button radius mt "
+              onClick={()=>navigeat("/blogs/create-blog")}
+          >
+             Create New Post
+          </button>
           <h2>All Post</h2>
           {renderedBlogs}
        </section>
