@@ -13,7 +13,7 @@ const SingleBlogPage = () => {
    if (!blog) {
       return (
           <section>
-             <h2>پستی که دنبالش میگردی وجود نداره دوست من 🤗</h2>
+             <h2>this is npt found 🤗</h2>
           </section>
       );
    }
@@ -33,14 +33,14 @@ const SingleBlogPage = () => {
              <p className="blog-content">{blog.content}</p>
 
              <Link to={`/editBlog/${blog.id}`} className="button">
-                ویرایش پست
+                Edit
              </Link>
              <button
                  className="muted-button"
                  style={{ marginRight: "10px" }}
                  onClick={handleDelete}
              >
-                حذف پست
+                Delete
              </button>
           </article>
        </section>

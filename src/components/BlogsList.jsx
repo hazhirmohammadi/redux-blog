@@ -23,7 +23,7 @@ const BlogsList = () => {
           <p className="blog-content">{blog.content.substring(0, 100)}</p>
 
           <Link to={`/blogs/${blog.id}`} className="button muted-button">
-             دیدن کامل پست
+             see more
           </Link>
        </article>
    ));
@@ -37,9 +37,9 @@ const BlogsList = () => {
               }}
               onClick={() => navigate("/blogs/create-blog")}
           >
-             ساخت پست جدید
+            Create new post
           </button>
-          <h2>تمامی پست ها</h2>
+          <h2>see All post</h2>
           {renderedBlogs}
        </section>
    );

@@ -1,59 +1,64 @@
-import {createSlice, nanoid} from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { sub } from "date-fns-jalali";
 
 const initialState = {
    blogs: [
       {
          id: nanoid(),
-         data: new Date().toDateString(),
-         title: "[ 1 ] post",
-         content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+         date: sub(new Date(), { days: 2, minutes: 10 }).toISOString(),
+         title: "POST 1",
+         content: "POST lorem ip esoum ☺️",
       },
       {
          id: nanoid(),
-         data: new Date().toDateString(),
-         title: "[ 2 ] post",
-         content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.📜"
-      }
-   ]
+         date: sub(new Date(), { minutes: 5 }).toISOString(),
+         title: "POST 2",
+         content: "hello world 🤗",
+      },
+   ],
 };
 
-const blogSlice = createSlice({
+const blogsSlice = createSlice({
    name: "blogs",
    initialState: initialState,
    reducers: {
       blogAdded: {
          reducer(state, action) {
-            state.blogs.push(action.payload)
+            state.blogs.push(action.payload);
          },
          prepare(title, content) {
+            //Complex logic
             return {
                payload: {
                   id: nanoid(),
+                  date: new Date().toISOString(),
                   title,
-                  content
+                  content,
                },
             };
          },
       },
-      /**/
       blogUpdated: (state, action) => {
-         const {id, title, content} = action.payload;
-         const existingBlog = state.blogs.find(blog => blog.id === id);
+         const { id, title, content } = action.payload;
+         const existingBlog = state.blogs.find((blog) => blog.id === id);
+
          if (existingBlog) {
             existingBlog.title = title;
             existingBlog.content = content;
          }
-      }
-      /**/
-      , blogDeleted: (state, action) => {
-         const {id} = action.payload;
-         state.blogs = state.blogs.filter(blog => blog.id !== id);
-      }
+      },
+      blogDeleted: (state, action) => {
+         const { id } = action.payload;
+         state.blogs = state.blogs.filter((blog) => blog.id !== id);
+      },
    },
 });
 
-export const selectAllBlogs=state=>state.blogs.blogs;
-export const  selectBlogsId=(state,blogId)=> state.blogs.blogs.find(blog=>blog.id===blogId);
-export const {blogAdded, blogUpdated, blogDeleted} = blogSlice.actions;
+export const selectAllBlogs = (state) => state.blogs.blogs;
 
-export default blogSlice.reducer;
+export const selectBlogById = (state, blogId) =>
+    state.blogs.blogs.find((blog) => blog.id === blogId);
+
+export const { blogAdded, blogUpdated, blogDeleted } = blogsSlice.actions;
+
+export default blogsSlice.reducer;

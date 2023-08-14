@@ -26,9 +26,9 @@ const CreateBlogForm = () => {
 
    return (
        <section>
-          <h2>ساخت پست جدید</h2>
+          <h2>Create a new Post</h2>
           <form autoComplete="off">
-             <label htmlFor="blogTitle">عنوان پست :</label>
+             <label htmlFor="blogTitle">Subject Post: </label>
              <input
                  type="text"
                  id="blogTitle"
@@ -36,7 +36,7 @@ const CreateBlogForm = () => {
                  value={title}
                  onChange={onTitleChange}
              />
-             <label htmlFor="blogContent">محتوای اصلی :</label>
+             <label htmlFor="blogContent">Main content:</label>
              <textarea
                  id="blogContent"
                  name="blogContent"
@@ -44,7 +44,7 @@ const CreateBlogForm = () => {
                  onChange={onContentChange}
              />
              <button type="button" onClick={handleSubmitForm}>
-                ذخیره پست
+                Save POST
              </button>
           </form>
        </section>

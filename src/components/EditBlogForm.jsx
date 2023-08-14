@@ -27,16 +27,16 @@ const EditBlogForm = () => {
    if (!blog) {
       return (
           <section>
-             <h2>پستی که دنبالش میگردی وجود نداره دوست من 🤗</h2>
+             <h2>Not found 404</h2>
           </section>
       );
    }
 
    return (
        <section>
-          <h2>ویرایش پست</h2>
+          <h2>Edit Post</h2>
           <form autoComplete="off">
-             <label htmlFor="blogTitle">عنوان پست :</label>
+             <label htmlFor="blogTitle">subject:</label>
              <input
                  type="text"
                  id="blogTitle"
@@ -44,7 +44,7 @@ const EditBlogForm = () => {
                  value={title}
                  onChange={onTitleChange}
              />
-             <label htmlFor="blogContent">محتوای اصلی :</label>
+             <label htmlFor="blogContent">Main Content:</label>
              <textarea
                  id="blogContent"
                  name="blogContent"
@@ -52,7 +52,7 @@ const EditBlogForm = () => {
                  onChange={onContentChange}
              />
              <button type="button" onClick={handleSubmitForm}>
-                ویرایش پست
+                Edit
              </button>
           </form>
        </section>

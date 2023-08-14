@@ -1,32 +1,35 @@
-import {createBrowserRouter} from "react-router-dom";
-import MainLayout from "../layouts/MainLayout.jsx";
-import App from "../App.jsx";
-import SingleBlogPage from "../component/SingleBlogPage.jsx";
-import CreateBlogForm from "../component/CreateBlogForm.jsx";
-import EditBlogForm from "../component/EditBlogForm.jsx";
+import { createBrowserRouter } from "react-router-dom";
+
+import App from "../App";
+import MainLayout from "../layouts/MainLayout";
+import SingleBlogPage from "../components/SingleBlogPage";
+import CreateBlogForm from "../components/CreateBlogForm";
+import EditBlogForm from "../components/EditBlogForm";
 
 export const router = createBrowserRouter([
    {
       path: "/",
-      element: <MainLayout/>,
-      errorElement: <h3 className="text-center">Not Found 😢...</h3>
-      , children: [
+      element: <MainLayout />,
+      errorElement: (
+          <h3 className="text-center">چیزی پیدا نکردیم متاسفانه 🤗 ...</h3>
+      ),
+      children: [
          {
             path: "/",
-            element: <App/>,
-         }
-      ]
+            element: <App />,
+         },
+         {
+            path: "/blogs/create-blog",
+            element: <CreateBlogForm />,
+         },
+         {
+            path: "/blogs/:blogId",
+            element: <SingleBlogPage />,
+         },
+         {
+            path: "/editBlog/:blogId",
+            element: <EditBlogForm />,
+         },
+      ],
    },
-   {
-      path: "/blogs/create-blog",
-      element: <CreateBlogForm/>
-   },
-   {
-      path: "/blogs/:blogId",
-      element: <SingleBlogPage/>
-   },
-   {
-      path: "/editBlog/:blogId",
-      element: <EditBlogForm/>
-   }
 ]);

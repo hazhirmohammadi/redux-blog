@@ -4,11 +4,11 @@ const Navbar = () => {
    return (
        <nav>
           <section>
-             <h4>وبلاگ کوچک ریداکسی من</h4>
+             <h4>Redux Blog</h4>
 
              <div className="navContent">
                 <div className="navLinks">
-                   <Link to={"/"}>وبلاگ</Link>
+                   <Link to={"/"}>Back</Link>
                 </div>
              </div>
           </section>

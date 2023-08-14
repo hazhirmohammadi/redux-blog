@@ -1,14 +1,15 @@
-import {Outlet} from "react-router-dom"
-import Navbar from "../component/Navbar.jsx";
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar.jsx";
 
 const MainLayout = () => {
    return (
        <>
-          <Navbar/>
+          <Navbar />
           <div>
-             <Outlet/>
+             <Outlet />
           </div>
        </>
-   )
+   );
 };
+
 export default MainLayout;

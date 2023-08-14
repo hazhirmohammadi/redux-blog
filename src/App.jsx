@@ -1,15 +1,11 @@
-import BlogsList from "./component/BlogsList.jsx";
+import BlogsList from "./components/BlogsList";
 
 const App = () => {
-
-
    return (
        <>
-          <div>
-             <BlogsList/>
-          </div>
+          <BlogsList />
        </>
-   )
-}
+   );
+};
 
-export default App
+export default App;
