@@ -17,7 +17,10 @@
     color: #009688;
 }
 .green{
-    color: #4caf50;
+    color: #4caf50 ;
+}
+.bg_green{
+    background: #4caf50 ;
 }
 .grey{
     color: #37474f;
@@ -27,6 +30,9 @@
 }
 .amber{
     color: #ffc107;
+}
+.bg_amber{
+    background: #ffc107;
 }
 .cyan{
     color: #00838f;

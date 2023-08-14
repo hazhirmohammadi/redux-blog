@@ -8,12 +8,14 @@ const initialState = {
          date: sub(new Date(), { days: 2, minutes: 10 }).toISOString(),
          title: "POST 1",
          content: "POST lorem ip esoum ☺️",
+         user:"1"
       },
       {
          id: nanoid(),
          date: sub(new Date(), { minutes: 5 }).toISOString(),
          title: "POST 2",
          content: "hello world 🤗",
+         user: "3"
       },
    ],
 };

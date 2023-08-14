@@ -7,7 +7,7 @@ const Navbar = () => {
              <h4>Redux Blog</h4>
 
              <div className="navContent">
-                <div className="navLinks">
+                <div className="navLinks mb">
                    <Link to={"/"}>Back</Link>
                 </div>
              </div>

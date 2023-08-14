@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { selectAllBlogs } from "../reducers/blogSlice";
 import ShowTime from "./ShowTime";
+import ShowAuthor from "./ShowAuthor.jsx";
 
 const BlogsList = () => {
    const blogs = useSelector(selectAllBlogs);
@@ -18,6 +19,7 @@ const BlogsList = () => {
 
           <div style={{ marginTop: "10px", marginRight: "20px" }}>
              <ShowTime timestamp={blog.date} />
+             <a className="m bg_amber p1 radius"><ShowAuthor userId={blog.user}/></a>
           </div>
 
           <p className="blog-content">{blog.content.substring(0, 100)}</p>
