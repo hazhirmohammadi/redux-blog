@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+
 import { blogAdded } from "../reducers/blogSlice";
 
 const CreateBlogForm = () => {
@@ -16,7 +17,7 @@ const CreateBlogForm = () => {
 
    const handleSubmitForm = () => {
       if (title && content) {
-         dispatch(blogAdded(title,content));
+         dispatch(blogAdded(title, content));
          setTitle("");
          setContent("");
          navigate("/");
@@ -24,28 +25,26 @@ const CreateBlogForm = () => {
    };
 
    return (
-       <section style={{display:"flex",justifyContent:"center",}}>
-          <h2 className="m">create Post</h2>
-          <form autoComplete="off" className="form radius mt">
-             <label className="label radius text_white bg_block" htmlFor="blogTitle">Subject:</label>
+       <section>
+          <h2>ساخت پست جدید</h2>
+          <form autoComplete="off">
+             <label htmlFor="blogTitle">عنوان پست :</label>
              <input
-                 className="input radius font-md"
                  type="text"
                  id="blogTitle"
                  name="blogTitle"
                  value={title}
                  onChange={onTitleChange}
              />
-             <label className="label radius text_white bg_block" htmlFor="blogContent">Body post :</label>
+             <label htmlFor="blogContent">محتوای اصلی :</label>
              <textarea
-                 className="input radius font-sm"
                  id="blogContent"
                  name="blogContent"
                  value={content}
                  onChange={onContentChange}
              />
-             <button className="btn radius m" type="button" onClick={handleSubmitForm}>
-                Create ⚡
+             <button type="button" onClick={handleSubmitForm}>
+                ذخیره پست
              </button>
           </form>
        </section>
