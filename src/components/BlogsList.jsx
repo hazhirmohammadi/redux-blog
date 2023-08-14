@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { selectAllBlogs } from "../reducers/blogSlice";
 import ShowTime from "./ShowTime";
 import ShowAuthor from "./ShowAuthor.jsx";
+import ReactionButtons from "./ReactionButtons.jsx";
 
 const BlogsList = () => {
    const blogs = useSelector(selectAllBlogs);
@@ -23,7 +24,7 @@ const BlogsList = () => {
           </div>
 
           <p className="blog-content">{blog.content.substring(0, 100)}</p>
-
+          <ReactionButtons blog={blog}/>
           <Link to={`/blogs/${blog.id}`} className="button muted-button">
              see more
           </Link>
