@@ -1,24 +1,17 @@
-import {createSlice,nanoid} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {getAllUsers} from "../services/blogsServices.js";
 
-const initialState = [
-   {
-      id:"1",
-      fullname:"hazhir mohammadi"
-   },
-   {
-      id:"2",
-      fullname:"rezgar mohammadi"
-   },
-   {
-      id:"3",
-      fullname:"BlackPerla"
-   },
 
-];
+
+
+export const fetchUser= createAsyncThunk('/users/fetchUser',async ()=>{
+   const response= await getAllUsers();
+   return response.date;
+})
 
 const usersSlice=createSlice({
    name:"users",
-   initialState,
+   initialState:[],
    reducers:{}
 });
 export default usersSlice.reducer;

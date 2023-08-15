@@ -1,4 +1,17 @@
 {
   "blogs": [],
-  "user": []
+  "users": [
+    {
+      "id": "bp9wir9LMI-5YsZhx6W4S",
+      "fullname": "hazhir mohammadi"
+    },
+    {
+      "id": "8rQWW2K-GW2a2dCAv9xaX",
+      "fullname": "rezgar mohammadi"
+    },
+    {
+      "id": "o32Xn1PXIlux36y8Wtl6C",
+      "fullname": "BlackPerla"
+    }
+  ]
 }
