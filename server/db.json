@@ -27,34 +27,20 @@
         "rocket": "0",
         "eyes": "0"
       }
-    },
-    {
-      "id": "IiY0wdYmsEqfCYQksAMqI",
-      "date": "2023-08-17T06:28:10.239Z",
-      "title": "g",
-      "content": "g",
-      "user": "yshVdDXRBXsUGFYT_qA2E",
-      "reactions": {
-        "thumbsUp": 0,
-        "hooray": 0,
-        "heart": 0,
-        "rocket": 0,
-        "eyes": 0
-      }
     }
   ],
   "users": [
     {
       "id": "yshVdDXRBXsUGFYT_qA2E",
-      "fullname": "یونس قربانی"
+      "fullname": " linux"
     },
     {
       "id": "_cAd72vpJJfQFtj9OqCdv",
-      "fullname": "ایمان مدائنی"
+      "fullname": "perla"
     },
     {
-      "id": "gkjzksxxy6Soj18PCfLu2",
-      "fullname": "سجاد باقرزاده"
+      "id": "ZZkxZltKIS-mjFzsIP37c",
+      "fullname": "hazhir"
     }
   ]
 }

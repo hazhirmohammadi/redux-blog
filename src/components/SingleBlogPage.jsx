@@ -27,8 +27,8 @@ const SingleBlogPage = () => {
 
     const handleDelete = () => {
         if (blog) {
-            // dispatch(deleteApiBlog(blog.id));
-            dispatch(blogDeleted({ id: blog.id }));
+            dispatch(deleteApiBlog(blog.id));
+            // dispatch(blogDeleted({ id: blog.id }));
             navigate("/");
         }
     };

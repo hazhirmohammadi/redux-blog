@@ -9,7 +9,7 @@ const Navbar = () => {
                 <div className="navContent">
                     <div className="navLinks">
                         <Link to={"/"}>وبلاگ</Link>
-                        <Link style={{margin:"5px"}} to={"/users"}>نویسندگان</Link>
+                        <Link to={"/users"}>نویسندگان</Link>
                     </div>
                 </div>
             </section>
