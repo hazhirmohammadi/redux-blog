@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import SingleBlogPage from "../components/SingleBlogPage";
 import CreateBlogForm from "../components/CreateBlogForm";
 import EditBlogForm from "../components/EditBlogForm";
+import UsersList from "../components/UsersList";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: "/editBlog/:blogId",
                 element: <EditBlogForm />,
+            },
+            {
+                path: "/users",
+                element: <UsersList />,
             },
         ],
     },
