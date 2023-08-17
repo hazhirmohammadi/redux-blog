@@ -1,5 +1,10 @@
-import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
-import { getAllBlogs } from "../services/blogsServices";
+import {
+    createSlice,
+    nanoid,
+    createAsyncThunk,
+    current,
+} from "@reduxjs/toolkit";
+import { createBlog, deleteBlog, getAllBlogs } from "../services/blogsServices";
 
 const initialState = {
     blogs: [],
@@ -11,6 +16,22 @@ export const fetchBlogs = createAsyncThunk("/blogs/fetchBlogs", async () => {
     const response = await getAllBlogs();
     return response.data;
 });
+
+export const deleteApiBlog = createAsyncThunk(
+    "/blogs/deleteApiBlog",
+    async (initialBlogId) => {
+        await deleteBlog(initialBlogId);
+        return initialBlogId;
+    }
+);
+
+export const addNewBlog = createAsyncThunk(
+    "/blogs/addNewBlog",
+    async (initialBlog) => {
+        const response = await createBlog(initialBlog);
+        return response.data;
+    }
+);
 
 const blogsSlice = createSlice({
     name: "blogs",
@@ -29,16 +50,19 @@ const blogsSlice = createSlice({
                         title,
                         content,
                         user: userId,
+                        reactions: {
+                            thumbsUp: 0,
+                            hooray: 0,
+                            heart: 0,
+                            rocket: 0,
+                            eyes: 0,
+                        },
                     },
                 };
             },
         },
-        blogDeleted: (state, action) => {
-            const {id} = action.payload;
-            state.blogs = state.blogs.filter((blog) => blog.id !== id);
-        },
         blogUpdated: (state, action) => {
-            const {id, title, content} = action.payload;
+            const { id, title, content } = action.payload;
             const existingBlog = state.blogs.find((blog) => blog.id === id);
 
             if (existingBlog) {
@@ -46,8 +70,14 @@ const blogsSlice = createSlice({
                 existingBlog.content = content;
             }
         },
+        blogDeleted: (state, action) => {
+            const { id } = action.payload;
+            state.blogs = state.blogs.filter((blog) => blog.id !== id);
+            console.log(current(state));
+            console.log(state.blogs);
+        },
         reactionAdded: (state, action) => {
-            const {blogId, reaction} = action.payload;
+            const { blogId, reaction } = action.payload;
             const existingBlog = state.blogs.find((blog) => blog.id === blogId);
 
             if (existingBlog) {
@@ -57,7 +87,7 @@ const blogsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchBlogs.pending, (state) => {
+            .addCase(fetchBlogs.pending, (state, action) => {
                 state.status = "loading";
             })
             .addCase(fetchBlogs.fulfilled, (state, action) => {
@@ -67,7 +97,14 @@ const blogsSlice = createSlice({
             .addCase(fetchBlogs.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
-
+            })
+            .addCase(addNewBlog.fulfilled, (state, action) => {
+                state.blogs.push(action.payload);
+            })
+            .addCase(deleteApiBlog.fulfilled, (state, action) => {
+                state.blogs = state.blogs.filter(
+                    (blog) => blog.id !== action.payload
+                );
             });
     },
 });
