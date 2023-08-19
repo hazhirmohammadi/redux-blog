@@ -46,3 +46,11 @@ dispatch(fetchBlogs()); //returns 'blogs/fetchBlogs/pending' action
 //builder.addCase => یک ریدوسر تعریف میکنه که هندل میکنه تنها یک نوع اکشن شناخته شده
 //builder.addMatcher => یک ریدوسر تعریف میکنه که به هر اکشنی جواب میده در صورتی که متچر true باشه
 //builder.addDefault => یک ریدوسر تعریف میکنه که زمانی اجرا میشه که هیچ ریدوسری در جواب به اکشن نباشه
+
+//createSelector
+//Reselect Library
+const state1 = getState();
+
+selectBlogsByUser(state1, "user1"); //اجرا میشه چون اولین بار هست
+selectBlogsByUser(state1, "user1"); //اجرا نمیشه چون پارامترهای تغییری نکردن
+selectBlogsByUser(state1, "user2"); //اجرا میشه چون پارامتر تغییر کرده
