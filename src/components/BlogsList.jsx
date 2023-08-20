@@ -9,6 +9,7 @@ import ReactionButtons from "./ReactionButtons";
 import Spinner from "./Spinner";
 
 let Blog = ({ blog }) => {
+
     return (
         <>
             <article className="blog-excerpt">
