@@ -54,3 +54,21 @@ const state1 = getState();
 selectBlogsByUser(state1, "user1"); //اجرا میشه چون اولین بار هست
 selectBlogsByUser(state1, "user1"); //اجرا نمیشه چون پارامترهای تغییری نکردن
 selectBlogsByUser(state1, "user2"); //اجرا میشه چون پارامتر تغییر کرده
+
+//Normalized State
+{
+    users: {
+        ids: ["user1", "user2", "user3"],
+        entities : {
+            "user1": {id: "user1", firstName: "Younes"},
+            "user2": {id: "user2", firstName: "Younes"},
+            "user3": {id: "user3", firstName: "Younes"},
+        }
+    }
+}
+
+const userId = "user2";
+const userObject = state.users.entities[userId]
+
+//createEntityAdaptor({options})
+{ids: [], entities: {} }
