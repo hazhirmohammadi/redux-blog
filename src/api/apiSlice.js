@@ -7,7 +7,10 @@ export const apiSlice = createApi({
         getBlogs: builder.query({
             query: () => "/blogs",
         }),
+        getBlog: builder.query({
+            query: (initialBlogId) => `/blogs/${initialBlogId}`,
+        }),
     }),
 });
 
-export const { useGetBlogsQuery } = apiSlice;
+export const { useGetBlogsQuery, useGetBlogQuery } = apiSlice;

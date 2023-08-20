@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {apiSlice} from "../api/apiSlice.js"
+
+import { apiSlice } from "../api/apiSlice";
 import blogsReducer from "../reducers/blogSlice";
 import usersReducer, { fetchUsers } from "../reducers/userSlice";
 
@@ -7,10 +8,10 @@ export const store = configureStore({
     reducer: {
         blogs: blogsReducer,
         users: usersReducer,
-        [apiSlice.reducerPath]:apiSlice.reducer
+        [apiSlice.reducerPath]: apiSlice.reducer,
     },
-    middleware:(getDefaultMiddleware) => getDefaultMiddleware()
-            .concat(apiSlice.middleware)
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 //Fetch all users from api
