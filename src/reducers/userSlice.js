@@ -1,48 +1,67 @@
 import {
     createSlice,
-    createAsyncThunk,
     createEntityAdapter,
+    createSelector,
 } from "@reduxjs/toolkit";
-import { createUser, deleteUser, getAllUsers } from "../services/blogsServices";
+import { apiSlice } from "../api/apiSlice";
 
 const userAdaptor = createEntityAdapter();
 
 const initialState = userAdaptor.getInitialState();
 
-export const fetchUsers = createAsyncThunk("/users/fetchUsers", async () => {
-    const response = await getAllUsers();
-    return response.data;
+export const extendedApiSlice = apiSlice.injectEndpoints({
+    endpoints: (builder) => ({
+        getUsers: builder.query({
+            query: () => "/users",
+            transformResponse: (responseData) => {
+                return userAdaptor.setAll(initialState, responseData);
+            },
+            providesTags: ["USER"],
+        }),
+        addNewUser: builder.mutation({
+            query: (user) => ({
+                url: "/users",
+                method: "POST",
+                body: user,
+            }),
+            invalidatesTags: ["USER"],
+        }),
+        deleteUser: builder.mutation({
+            query: (userId) => ({
+                url: `/users/${userId}`,
+                method: "DELETE",
+            }),
+            invalidatesTags: ["USER"],
+        }),
+    }),
 });
 
-export const deleteApiUser = createAsyncThunk(
-    "/users/deleteApiUser",
-    async (initialUserId) => {
-        await deleteUser(initialUserId);
-        return initialUserId;
-    }
-);
-
-export const addNewUser = createAsyncThunk(
-    "/users/addNewUser",
-    async (initialUser) => {
-        const response = await createUser(initialUser);
-        return response.data;
-    }
-);
+export const selectUsersResult = extendedApiSlice.endpoints.getUsers.select();
 
 const usersSlice = createSlice({
     name: "users",
     initialState,
     reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchUsers.fulfilled, userAdaptor.setAll)
-            .addCase(addNewUser.fulfilled, userAdaptor.addOne)
-            .addCase(deleteApiUser.fulfilled, userAdaptor.removeOne);
-    },
+    // extraReducers: (builder) => {
+    //     builder
+    //         .addCase(fetchUsers.fulfilled, userAdaptor.setAll)
+    //         .addCase(addNewUser.fulfilled, userAdaptor.addOne)
+    //         .addCase(deleteApiUser.fulfilled, userAdaptor.removeOne);
+    // },
 });
 
+const selectUsersData = createSelector(
+    selectUsersResult,
+    (usersResult) => usersResult.data
+);
+
 export const { selectAll: selectAllUsers, selectById: selectUserById } =
-    userAdaptor.getSelectors((state) => state.users);
+    userAdaptor.getSelectors((state) => selectUsersData(state) ?? initialState);
+
+export const {
+    useGetUsersQuery,
+    useAddNewUserMutation,
+    useDeleteUserMutation,
+} = extendedApiSlice;
 
 export default usersSlice.reducer;
