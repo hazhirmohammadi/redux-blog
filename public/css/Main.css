@@ -1,0 +1,96 @@
+/**************========NAVBAR=======*************/
+.container_nav {
+    background-color: #151414;
+    padding: 15px 20px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    box-shadow: #151414 3px 3px 10px;
+}
+
+.subject_nav {
+    font-size: 20px;
+    margin: 8px;
+    font-family: system-ui;
+    background-color: #446eb4;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: #0c63e4 3px 3px 10px;
+
+}
+
+.container_btn_nav {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn_nav1 {
+    margin-right: 10px;
+    background-color: #00838f;
+    text-decoration: none;
+}
+
+.btn_nav2 {
+    background-color: #00838f;
+    text-decoration: none;
+
+}
+.btn_nav:hover{
+    text-decoration: none;
+    background-color: #4caf50;
+    color: whitesmoke !important;
+    transition: all ease-in-out .2s;
+    box-shadow: #4caf50 1px 1px 8px;
+}
+/****/
+/**************========BLOG LIST=======*************/
+.container_card{
+    background-color: rgba(0, 0, 0, 0.18);
+    padding: 10px;
+    border: rgba(0, 0, 0, 0.59) 1px solid;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: #000000 1px 1px 8px;
+}
+.subject_card{
+    font-family: system-ui;
+    background-color:  #446eb4;
+    width: fit-content;
+    color: whitesmoke;
+    padding: 3px;
+    border-radius: 8px;
+}
+.card_content{
+    margin-top: 10px;
+    background-color: rgba(95, 98, 117, 0.15);
+    width: fit-content;
+    font-size: 15px;
+}
+.reactionButtons{
+    width: 35px;
+    font-size: 14px;
+    padding: 4px;
+    margin:  8px 3px ;
+    height: 35px;
+}
+/******/
+/**************========CREATE NEW POST=======*************/
+.subject_Create_Post{
+    margin-top: 15px;
+    background-color: rgba(0, 100, 0, 0.75);
+    color: whitesmoke;
+    padding: 8px;
+    border-radius: 8px;
+}
+.Post_title{
+    background-color: #d32f2f;
+}
+.btn_create{
+    background-color: #0c63e4;
+    color: whitesmoke;
+    margin-top: 10px;
+    cursor: pointer;
+}

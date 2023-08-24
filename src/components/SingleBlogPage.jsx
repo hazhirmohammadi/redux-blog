@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useDeleteBlogMutation, useGetBlogQuery } from "../api/apiSlice";
+import { useGetBlogQuery } from "../api/apiSlice";
 import ShowTime from "./ShowTime";
 import ShowAuthor from "./ShowAuthor";
 import ReactionButtons from "./ReactionButtons";
@@ -9,16 +9,8 @@ const SingleBlogPage = () => {
     const { blogId } = useParams();
 
     const { data: blog, isFetching, isSuccess } = useGetBlogQuery(blogId);
-    const [deleteBlog] = useDeleteBlogMutation();
 
     const navigate = useNavigate();
-
-    const handleDelete = async () => {
-        if (blog) {
-            await deleteBlog(blogId);
-            navigate("/");
-        }
-    };
 
     if (!blog) {
         return (
@@ -51,13 +43,20 @@ const SingleBlogPage = () => {
                 <button
                     className="muted-button"
                     style={{ marginRight: "10px" }}
-                    onClick={handleDelete}
                 >
                     حذف پست
                 </button>
             </article>
         );
     }
+
+    const handleDelete = () => {
+        if (blog) {
+            // dispatch(deleteApiBlog(blog.id));
+            // dispatch(blogDeleted({ id: blog.id }));
+            navigate("/");
+        }
+    };
 
     return <section> {content} </section>;
 };

@@ -52,42 +52,46 @@ const CreateBlogForm = () => {
 
     return (
         <section>
-            <h2>ساخت پست جدید</h2>
+            <h2 className="subject_Create_Post">Create New Post😀</h2>
             <form autoComplete="off">
-                <label htmlFor="blogTitle">عنوان پست :</label>
+                <label className="badge Post_title" htmlFor="blogTitle">Subject Post:</label>
                 <input
+                    className="form-control"
                     type="text"
                     id="blogTitle"
                     name="blogTitle"
                     value={title}
                     onChange={onTitleChange}
                 />
-                <label htmlFor="blogAuthor">نویسنده :</label>
+                <label className="badge Post_title" htmlFor="blogAuthor">Writers Select: ⤵</label>
                 <select
+                    className="form-control"
                     id="blogAuthor"
                     value={userId}
                     onChange={onAuthorChanged}
                 >
-                    <option value="">انتخاب نویسنده</option>
+                    <option value="">none</option>
                     {users.map((user) => (
                         <option key={user.id} value={user.id}>
                             {user.fullname}
                         </option>
                     ))}
                 </select>
-                <label htmlFor="blogContent">محتوای اصلی :</label>
+                <label className="badge Post_title" htmlFor="blogContent">Main content :</label>
                 <textarea
+                    className="form-control"
                     id="blogContent"
                     name="blogContent"
                     value={content}
                     onChange={onContentChange}
                 />
                 <button
+                    className="btn  btn_create btn_nav"
                     type="button"
                     onClick={handleSubmitForm}
                     disabled={!canSave}
                 >
-                    ذخیره پست
+                   Create
                 </button>
             </form>
         </section>

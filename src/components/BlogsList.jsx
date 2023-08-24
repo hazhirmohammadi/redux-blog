@@ -10,20 +10,20 @@ import Spinner from "./Spinner";
 let Blog = ({ blog }) => {
     return (
         <>
-            <article className="blog-excerpt">
-                <h3>{blog.title}</h3>
+            <article className="container_card">
+                <h3 className="subject_card">{blog.title}</h3>
 
                 <div style={{ marginTop: "10px", marginRight: "20px" }}>
                     <ShowTime timestamp={blog.date} />
                     <ShowAuthor userId={blog.user} />
                 </div>
 
-                <p className="blog-content">{blog.content.substring(0, 100)}</p>
+                <p className="card_content">{blog.content.substring(0, 100)}.....</p>
 
                 <ReactionButtons blog={blog} />
 
-                <Link to={`/blogs/${blog.id}`} className="button muted-button">
-                    دیدن کامل پست
+                <Link  to={`/blogs/${blog.id}`} className="btn btn_nav btn_nav1">
+                    See More
                 </Link>
             </article>
         </>
@@ -51,7 +51,7 @@ const BlogsList = () => {
     let content;
 
     if (isLoading) {
-        content = <Spinner text="بارگذاری ..." />;
+        content = <Spinner text="Loading..." />;
     } else if (isSuccess) {
         content = sortedBlogs.map((blog) => <Blog key={blog.id} blog={blog} />);
     } else if (isError) {
@@ -67,9 +67,9 @@ const BlogsList = () => {
                 }}
                 onClick={() => navigate("/blogs/create-blog")}
             >
-                ساخت پست جدید
+                Create New Post
             </button>
-            <h2>تمامی پست ها</h2>
+            <h2>All post</h2>
             {/* <button onClick={refetch}>ریفرش پست ها</button> */}
             {content}
         </section>

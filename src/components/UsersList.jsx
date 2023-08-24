@@ -1,46 +1,42 @@
 import { useState } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-    selectAllUsers,
-    useAddNewUserMutation,
-    useDeleteUserMutation,
-} from "../reducers/userSlice";
+import { selectAllUsers } from "../reducers/userSlice";
 import { nanoid } from "@reduxjs/toolkit";
 
 const UsersList = () => {
     const [user, setUser] = useState("");
 
+    // const dispatch = useDispatch();
+
     const users = useSelector(selectAllUsers);
-    const [addNewUser, { isLoading }] = useAddNewUserMutation();
-    const [deleteUser] = useDeleteUserMutation();
 
     const onUserChange = (e) => setUser(e.target.value);
 
     const canSave = Boolean(user);
 
-    const handleSubmitForm = async () => {
-        if (canSave) {
-            await addNewUser({ id: nanoid(), fullname: user });
-            setUser("");
-        }
-    };
+    // const handleSubmitForm = () => {
+    //     if (canSave) {
+    //         dispatch(addNewUser({ id: nanoid(), fullname: user }));
+    //         setUser("");
+    //     }
+    // };
 
-    const handleDelete = async (userId) => {
-        await deleteUser(userId);
-    };
+    // const handleDelete = (userId) => {
+    //     dispatch(deleteApiUser(userId));
+    // };
 
     const renderedUsers = users.map((user) => (
         <li key={user.id}>
             <Link to={`/users/${user.id}`}>{user.fullname}</Link>
             &nbsp;
-            <Link
+            {/* <Link
                 style={{ marginRight: "10px", color: "tomato" }}
                 onClick={() => handleDelete(user.id)}
             >
                 &otimes;
-            </Link>
+            </Link> */}
         </li>
     ));
 
@@ -59,7 +55,7 @@ const UsersList = () => {
 
                     <button
                         type="button"
-                        onClick={handleSubmitForm}
+                        // onClick={handleSubmitForm}
                         disabled={!canSave}
                     >
                         ساخت نویسنده جدید

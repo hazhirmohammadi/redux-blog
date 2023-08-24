@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <nav>
-            <section>
-                <h1>وبلاگ کوچک ریداکسی من</h1>
+            <section className="container_nav">
+                <h1 className="subject_nav">Small My Redux Web Blog</h1>
 
-                <div className="navContent">
-                    <div className="navLinks">
-                        <Link to={"/"}>وبلاگ</Link>
-                        <Link to={"/users"}>نویسندگان</Link>
+                <div className="navbar">
+                    <div className="container_btn_nav">
+                        <Link className="btn_nav btn_nav1" to={"/"}>Back</Link>
+                        <Link className="btn_nav btn_nav2" to={"/users"}>writers</Link>
                     </div>
                 </div>
             </section>

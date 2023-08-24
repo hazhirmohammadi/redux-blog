@@ -15,18 +15,19 @@ const ReactionButtons = ({ blog }) => {
     const reactionButtons = Object.entries(reactionEmoji).map(
         ([name, emoji]) => {
             return (
-                <button
-                    key={name}
-                    type="button"
-                    onClick={() =>
-                        dispatch(
-                            reactionAdded({ blogId: blog.id, reaction: name })
-                        )
-                    }
-                    className="muted-button reaction-button"
-                >
-                    {emoji} {blog.reactions[name]}
-                </button>
+                  <button
+
+                      key={name}
+                      type="button"
+                      onClick={() =>
+                          dispatch(
+                              reactionAdded({ blogId: blog.id, reaction: name })
+                          )
+                      }
+                      className="reactionButtons"
+                  >
+                     {emoji} {blog.reactions[name]}
+                  </button>
             );
         }
     );
