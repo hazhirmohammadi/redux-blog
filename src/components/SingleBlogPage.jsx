@@ -15,36 +15,36 @@ const SingleBlogPage = () => {
     if (!blog) {
         return (
             <section>
-                <h2>پستی که دنبالش میگردی وجود نداره دوست من 🤗</h2>
+                <h2>🤗The post you are looking for does not exist, my friend</h2>
             </section>
         );
     }
 
     let content;
     if (isFetching) {
-        content = <Spinner text="در حال بارگذاری ..." />;
+        content = <Spinner text=" Loading..." />;
     } else if (isSuccess) {
         content = (
-            <article className="blog">
-                <h2>{blog.title}</h2>
+            <article className="container_card m-2">
+                <h2 className="subject_card">{blog.title}</h2>
 
                 <div style={{ marginTop: "10px", marginRight: "20px" }}>
                     <ShowTime timestamp={blog.date} />
                     <ShowAuthor userId={blog.user} />
                 </div>
 
-                <p className="blog-content">{blog.content}</p>
+                <p className="card_content">{blog.content}</p>
 
                 <ReactionButtons blog={blog} />
 
-                <Link to={`/editBlog/${blog.id}`} className="button">
-                    ویرایش پست
+                <Link to={`/editBlog/${blog.id}`}className="btn btn_nav btn_nav1">
+                    Edit Post
                 </Link>
                 <button
-                    className="muted-button"
+                    className="btn btn_nav bg-danger"
                     style={{ marginRight: "10px" }}
                 >
-                    حذف پست
+                   Delete Post
                 </button>
             </article>
         );

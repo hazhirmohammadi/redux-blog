@@ -8,7 +8,7 @@ import { nanoid } from "@reduxjs/toolkit";
 const UsersList = () => {
     const [user, setUser] = useState("");
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const users = useSelector(selectAllUsers);
 
@@ -16,36 +16,37 @@ const UsersList = () => {
 
     const canSave = Boolean(user);
 
-    // const handleSubmitForm = () => {
-    //     if (canSave) {
-    //         dispatch(addNewUser({ id: nanoid(), fullname: user }));
-    //         setUser("");
-    //     }
-    // };
+    const handleSubmitForm = () => {
+        if (canSave) {
+            dispatch(addNewUser({ id: nanoid(), fullname: user }));
+            setUser("");
+        }
+    };
 
-    // const handleDelete = (userId) => {
-    //     dispatch(deleteApiUser(userId));
-    // };
+    const handleDelete = (userId) => {
+        dispatch(deleteApiUser(userId));
+    };
 
     const renderedUsers = users.map((user) => (
         <li key={user.id}>
-            <Link to={`/users/${user.id}`}>{user.fullname}</Link>
+            <Link className="link-post badge text-black btn_nav bg_amber" to={`/users/${user.id}`}>{user.fullname}</Link>
             &nbsp;
-            {/* <Link
+            <Link
                 style={{ marginRight: "10px", color: "tomato" }}
                 onClick={() => handleDelete(user.id)}
             >
                 &otimes;
-            </Link> */}
+            </Link>
         </li>
     ));
 
     return (
-        <section>
+        <section className="container_card m-2 card_hover">
             <div>
                 <form autoComplete="off">
-                    <label htmlFor="user">نام نویسنده :</label>
+                    <label className="subject_card" htmlFor="user">authors name :</label>
                     <input
+                        className="form-control"
                         type="text"
                         id="user"
                         name="user"
@@ -54,15 +55,16 @@ const UsersList = () => {
                     />
 
                     <button
+                        className="btn  btn_create btn_nav"
                         type="button"
-                        // onClick={handleSubmitForm}
+                        onClick={handleSubmitForm}
                         disabled={!canSave}
                     >
-                        ساخت نویسنده جدید
+                       Create a new author
                     </button>
                 </form>
             </div>
-            <h2>لیست نویسندگان</h2>
+            <h2>List of authors</h2>
             <ul>{renderedUsers}</ul>
         </section>
     );

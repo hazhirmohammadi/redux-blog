@@ -51,7 +51,7 @@ const CreateBlogForm = () => {
     };
 
     return (
-        <section>
+        <section className="container_card m-2">
             <h2 className="subject_Create_Post">Create New Post😀</h2>
             <form autoComplete="off">
                 <label className="badge Post_title" htmlFor="blogTitle">Subject Post:</label>

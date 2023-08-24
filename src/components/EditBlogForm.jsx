@@ -40,32 +40,38 @@ const EditBlogForm = () => {
     if (!blog) {
         return (
             <section>
-                <h2>پستی که دنبالش میگردی وجود نداره دوست من 🤗</h2>
+                <h2>The post you are looking for does not exist, my friend</h2>
             </section>
         );
     }
 
     return (
-        <section>
-            <h2>ویرایش پست</h2>
+        <section className="container_card m-2 ">
+            <h2 className="subject_Create_Post">Edit post 📝</h2>
             <form autoComplete="off">
-                <label htmlFor="blogTitle">عنوان پست :</label>
+                <label className="badge Post_title" htmlFor="blogTitle">Subject Post:</label>
                 <input
+                    className="form-control"
                     type="text"
                     id="blogTitle"
                     name="blogTitle"
                     value={title}
                     onChange={onTitleChange}
                 />
-                <label htmlFor="blogContent">محتوای اصلی :</label>
+                <label className="badge Post_title" htmlFor="blogContent"> Main content :</label>
                 <textarea
+                    className="form-control"
                     id="blogContent"
                     name="blogContent"
                     value={content}
                     onChange={onContentChange}
                 />
-                <button type="button" onClick={handleSubmitForm}>
-                    ویرایش پست
+                <button
+                    type="button"
+                    onClick={handleSubmitForm}
+                    className="btn  btn_create btn_nav"
+                >
+                   Save Edit
                 </button>
             </form>
         </section>

@@ -30,21 +30,21 @@ const UserPage = () => {
     });
 
     const blogTitles = userBlogs.map((blog) => (
-        <li key={blog.id}>
-            <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
+        <li className="list_post" key={blog.id}>
+            <Link className="link-post badge text-black btn_nav" to={`/blogs/${blog.id}`}>{blog.title} 👁</Link>
         </li>
     ));
 
     return (
-        <section>
-            <h2>{user.fullname}</h2>
+        <section className="container_card m-1 ">
+            <h2 className="alert alert-danger">{user.fullname}</h2>
 
             <ul>
                 {userBlogs.length > 0 ? (
                     blogTitles
                 ) : (
                     <li style={{ listStyleType: "none" }}>
-                        نویسنده ما هیچ پستی تا به الان منتشر نکرده 🤗
+                        Our author has not published any posts yet🤗
                     </li>
                 )}
             </ul>

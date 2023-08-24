@@ -10,7 +10,7 @@ import Spinner from "./Spinner";
 let Blog = ({ blog }) => {
     return (
         <>
-            <article className="container_card">
+            <article className="container_card ">
                 <h3 className="subject_card">{blog.title}</h3>
 
                 <div style={{ marginTop: "10px", marginRight: "20px" }}>
@@ -37,7 +37,6 @@ const BlogsList = () => {
         isSuccess,
         isError,
         error,
-        // refetch,
     } = useGetBlogsQuery();
 
     const navigate = useNavigate();
@@ -69,8 +68,7 @@ const BlogsList = () => {
             >
                 Create New Post
             </button>
-            <h2>All post</h2>
-            {/* <button onClick={refetch}>ریفرش پست ها</button> */}
+            <h2 className="alert alert-success" >All post</h2>
             {content}
         </section>
     );

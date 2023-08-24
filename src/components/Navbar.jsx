@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav>
+        <nav className="Main_nav">
             <section className="container_nav">
                 <h1 className="subject_nav">Small My Redux Web Blog</h1>
 
